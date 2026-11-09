@@ -1,0 +1,349 @@
+\documentclass[10pt,
+%superscriptaddress,
+%groupedaddress,
+%unsortedaddress,
+%runinaddress,
+%frontmatterverbose, 
+%preprint,
+%preprintnumbers,
+%nofootinbib,
+%nobibnotes,
+%bibnotes,
+ amsmath,amssymb,
+ aps,prb, twocolumn
+]{revtex4-2}
+
+% Graphics and math
+\usepackage{empheq}
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage{dcolumn}
+\usepackage{physics}
+\usepackage{soul}
+\usepackage{dsfont}
+\usepackage{xcolor} % for more colors
+\usepackage[percent]{overpic} % for captions
+% Subfigures (compatible with REVTeX)
+\usepackage[caption=false]{subfig}  
+%\captionsetup[subfloat]{position=top,justification=raggedright,singlelinecheck=false}
+% Hyperlinks (must come last)
+\usepackage[colorlinks=true,allcolors=blue]{hyperref}
+
+
+\newcommand{\id}{\mathds{1}}
+\newcommand\sj[1]{ {\color{cyan} #1} } 
+\newcommand\jm[1]{ {\color{magenta} #1} } 
+\definecolor{mediumgreen}{HTML}{228B22} % forest green-ish
+\newcommand\oz[1]{ {\color{mediumgreen} #1} } 
+
+\begin{document}
+%=====================================================================
+%  APPENDIX B  (replacement)
+%  Von Neumann's measurement scheme on a lattice
+%=====================================================================
+\section{TEST for Von Neumann's Measurement Scheme on a Lattice}
+\label{app:vn}
+
+Von Neumann's scheme idealizes measurement as an instantaneous unitary
+kick~\cite{VonNeumann}. In this appendix we construct the lattice
+counterpart appropriate to Eq.~(1), identify the operator that plays the
+role of the continuum momentum, and extract the backaction phase
+$\Delta\phi$ and the coherence factor $R$. Our central result is that the
+detector coupling must be a function of the crystal momentum, and that the
+physically correct function is fixed by the on-shell scattering phase of the
+bond defect rather than chosen by fiat.
+
+%---------------------------------------------------------------------
+\subsection{Two conditions for a measurement kick}
+\label{app:vn:conditions}
+
+A kick is a single unitary $\hat U(\delta\tau)=e^{-i\hat h_I\delta\tau}$
+applied at one instant. Reducing a genuine interaction, spread over the
+window $\delta\tau$, to such a form requires that the time-ordered
+exponential collapse. Hence the coupling must be a constant of the free
+motion, i.e.\ $[\hat h_I,\hat H_0]=0$ with $\hat H_0=\hat H_D+\hat H_S$.
+That single requirement splits into two physically distinct conditions:
+\begin{align}
+[\hat h_I,\hat H_S] &= 0 &&\text{(qubit: non-demolition)}, \label{eq:condS}\\
+[\hat h_I,\hat H_D] &= 0 &&\text{(detector: kick validity)}. \label{eq:condD}
+\end{align}
+We break Eq.~\eqref{eq:condS} deliberately. That breaking is the subject of
+this work. Equation~\eqref{eq:condD} is a separate matter. It carries no
+information about the qubit and must hold for the kick description to exist
+at all.
+
+The interaction of Eq.~(2c) fails Eq.~\eqref{eq:condD}. The bond operator
+$\hat c^{\dagger}_{b+1}\hat c_b+\mathrm{h.c.}$ does not commute with the
+uniform hopping $\hat H_D$, so in the interaction picture it acquires an
+explicit time dependence over the window. The failure is not technical, it
+is physical: the electron does not reside at the bond, it flows through it.
+No instant exists at which the interaction can be said to act.
+
+%---------------------------------------------------------------------
+\subsection{The crystal momentum and its functions}
+\label{app:vn:K}
+
+We replace the finite chain by an infinite one, for which the crystal
+momentum $\hat k$ is well defined and
+\begin{equation}
+\hat H_D=-2t\cos(a\hat k).
+\label{eq:HDk}
+\end{equation}
+Equation~\eqref{eq:HDk} settles the classification. Since $\hat H_D$ is a
+function of $\hat k$ alone, every operator satisfying Eq.~\eqref{eq:condD}
+is itself a function of $\hat k$, up to the residual $k\to-k$ degeneracy of
+the cosine band. The most general detector coupling compatible with a
+measurement kick is therefore
+\begin{equation}
+\hat h_I\,\delta\tau=\hat\Phi(\hat k)\otimes\ket{1}\bra{1},
+\label{eq:hIgeneral}
+\end{equation}
+with $\hat\Phi$ a real function on the Brillouin zone. We stress that
+Eq.~\eqref{eq:hIgeneral} is a classification and not an ansatz. Von
+Neumann's continuum coupling $\hat h_I\propto\hat p$ is the single element
+$\Phi(k)\propto k$ of this family.
+
+Two properties of $\hat\Phi(\hat k)$ carry all of the physics. First, its
+value at the carrier momentum sets the conditional phase. Second, its
+derivative sets the conditional displacement of the pointer,
+\begin{equation}
+\lambda(k)=\partial_k\Phi(k),
+\label{eq:lambda}
+\end{equation}
+which is the Wigner delay length. For a wavepacket
+$\ket{\psi}=\int\!\mathrm{d}k\,\tilde\psi(k)e^{-ikx_c}\ket{k}$ the
+exponential of a \emph{linear} $\Phi$ acts as an exact rigid translation,
+\begin{equation}
+e^{i\lambda\hat k}\ket{\psi(x_c)}=\ket{\psi(x_c-\lambda)},
+\label{eq:translate}
+\end{equation}
+because each Fourier component is multiplied by $e^{i\lambda k}$ and the
+weights $\tilde\psi(k)$ are untouched. Equation~\eqref{eq:translate} is
+exact on the lattice, not a continuum limit, provided the packet does not
+wrap the Brillouin zone: $\lambda\ll\pi/k_0$, which weak coupling
+guarantees. We note that $\hat k$ itself has no such simple action on site
+states, viz.\ $\hat k\ket{j}=(2ia)^{-1}(\ket{j+1}-\ket{j-1})$. Only the
+exponential translates.
+
+Moving on, a curved $\Phi$ both shifts and deforms the packet. That
+distinction is the whole content of the present model. Von Neumann's
+pointer translates rigidly. Ours translates and distorts, and the
+distortion is governed by $\Phi''$.
+
+%---------------------------------------------------------------------
+\subsection{Physical identification of \texorpdfstring{$\Phi(k)$}{Phi(k)}}
+\label{app:vn:Phi}
+
+The function $\Phi$ is not free. Before and after the encounter the
+wavepacket is asymptotically free, so all that it retains of the
+interaction is the on-shell scattering data. For a single channel and a
+single defect that data is one phase per momentum. Hence
+$\Phi(k)=\arg\tau(k)$, with $\tau(k)$ the transmission amplitude of the
+modified bond. Replacing the local defect by $\hat\Phi(\hat k)$ is
+therefore a rewriting of the same physics in the only representation in
+which the kick picture is consistent, and not the introduction of a
+different model.
+
+A transparent derivation follows from first-order perturbation theory. The
+qubit state $\ket{1}$ shifts the bond amplitude by $\delta t=g/2$, and for a
+Bloch state on a ring of $L$ sites the induced energy shift is
+\begin{equation}
+\delta E_k=\bra{k}\delta t\big(\ket{b\!+\!1}\bra{b}+\mathrm{h.c.}\big)\ket{k}
+=\frac{2\delta t}{L}\cos(ka).
+\label{eq:dE}
+\end{equation}
+The electron spends a time $L/v_g$ in the region, with $v_g=2ta\sin(ka)$,
+so the accumulated phase is the product of energy shift and dwell time:
+\begin{equation}
+\Phi(k)=-\,\delta E_k\,\frac{L}{v_g}
+=-\frac{g}{2t}\cot(ka).
+\label{eq:Phi}
+\end{equation}
+The length $L$ cancels, as it must. Equation~\eqref{eq:Phi} is the lattice
+analogue of the semiclassical $\int\!\delta E\,\mathrm{d}t$, and it makes
+the momentum dependence intuitive. The denominator $\sin(ka)\propto v_g$
+gives the familiar threshold enhancement: a slow electron dwells longer and
+accumulates more phase. The numerator $\cos(ka)$ is the bond matrix element,
+which vanishes at $k=\pi/2a$ because there the amplitudes on adjacent sites
+are in quadrature, so a real change of the hopping produces no first-order
+energy shift. Hence a band-centre electron is blind to a weak bond defect.
+
+The exact amplitude confirms Eq.~\eqref{eq:Phi} and delimits its validity.
+Solving the scattering problem for a chain with hopping $t$ everywhere
+except $t'=t-g/2$ on the bond $(b,b+1)$, and writing $\eta=t'/t$, we obtain
+\begin{equation}
+\tau(k)=\frac{-2i\eta\sin (ka)}{e^{-ika}-\eta^{2}e^{ika}},
+\qquad
+r(k)=\frac{(\eta^{2}-1)e^{ika}}{e^{-ika}-\eta^{2}e^{ika}}.
+\label{eq:tauexact}
+\end{equation}
+Expanding Eq.~\eqref{eq:tauexact} for $g/2t\ll1$ recovers
+Eq.~\eqref{eq:Phi} together with the leading amplitude loss,
+\begin{equation}
+\arg\tau=-\frac{g}{2t}\cot(ka)\Big[1+\frac{g}{4t}\Big],
+\qquad
+|\tau|=1-\frac{1}{2}\Big(\frac{g}{2t}\Big)^{2}\frac{1}{\sin^{2}(ka)}.
+\label{eq:expand}
+\end{equation}
+The phase is first order in $g$ and the amplitude loss is second order, in
+agreement with the perturbative hierarchy of Appendix~C.
+
+%---------------------------------------------------------------------
+\subsection{The kick and the reduced density matrix}
+\label{app:vn:kick}
+
+We now apply the kick. The composite state at the moment the packet reaches
+the bond is $\ket{\psi(x_b)}\otimes\ket{q}$ with
+$\ket{q}=\cos(\theta_b/2)\ket{0}+\sin(\theta_b/2)e^{i\phi_0}\ket{1}$.
+Conditioned on $\ket{1}$ the packet is scattered, so
+\begin{equation}
+\ket{\Psi'}=\cos\tfrac{\theta_b}{2}\ket{\psi}\otimes\ket{0}
++\sin\tfrac{\theta_b}{2}e^{i\phi_0}
+\big[\tau(\hat k)\ket{\psi_\rightarrow}+r(\hat k)\ket{\psi_\leftarrow}\big]\otimes\ket{1},
+\label{eq:Psiprime}
+\end{equation}
+where $\ket{\psi_\rightarrow}$ and $\ket{\psi_\leftarrow}$ denote the
+forward and backward moving components. Tracing out the QPC gives a
+reduced qubit state whose populations are unchanged, since the scattering is
+elastic, and whose coherence is multiplied by the overlap
+\begin{equation}
+\big\langle\tau\big\rangle
+\equiv\bra{\psi}\tau(\hat k)\ket{\psi}
+=\int\!\mathrm{d}k\,|\tilde\psi(k)|^{2}\,\tau(k).
+\label{eq:overlap}
+\end{equation}
+Only the forward component contributes: the reflected packet is
+orthogonal to the undisturbed one, so the which-path information it carries
+is lost to the trace. Equation~\eqref{eq:overlap} is exact and replaces the
+Gaussian-displacement estimate of the previous treatment.
+
+The momentum weight $|\tilde\psi(k)|^{2}$ is a normalized Gaussian of
+variance $\sigma_k^{2}=1/(2\Delta_0^{2})$. We emphasize that $\sigma_k$ is
+conserved under free evolution, whereas the real-space width disperses.
+Hence the initial width $\Delta_0$, and not the width $\Delta(k_0)$ at the
+time of interaction, controls the overlap. Evaluating
+Eq.~\eqref{eq:overlap} by a second-order cumulant expansion of
+$\log\tau=\log|\tau|+i\Phi$ yields
+\begin{equation}
+\big\langle\tau\big\rangle
+=R\,e^{-i\Delta\phi},
+\label{eq:Rphi}
+\end{equation}
+with
+\begin{empheq}[box=\fbox]{align}
+\Delta\phi(k_0)&=\frac{g}{2t}\cot(ak_0)
++\frac{g}{4t}\frac{\cos(ak_0)}{\Delta_0^{2}\sin^{3}(ak_0)},
+\label{eq:dphi}\\[2pt]
+R(k_0)&=|\tau(k_0)|\;e^{-\lambda^{2}/4\Delta_0^{2}},
+\qquad \lambda=\frac{g/2t}{\sin^{2}(ak_0)} .
+\label{eq:R}
+\end{empheq}
+The first term of Eq.~\eqref{eq:dphi} is the on-shell phase of
+Eq.~\eqref{eq:Phi}. The second is the curvature correction
+$\tfrac12\sigma_k^{2}\Phi''(k_0)$, and it is the first place the wavepacket
+width enters the phase at all. Notwithstanding its smallness, of order one
+percent for $\Delta_0=7$, it is the leading signature of the non-rigid
+pointer and it is absent from any ideal von Neumann treatment.
+
+Turning to Eq.~\eqref{eq:R}, the two factors correspond to two distinct
+decoherence channels. The exponential is the pointer-overlap term familiar
+from the continuum scheme, controlled by the Wigner displacement $\lambda$.
+The prefactor $|\tau(k_0)|$ is elastic backscattering. For our parameters
+the second dominates the first by between one and two orders of magnitude,
+so that
+\begin{equation}
+1-R\simeq\tfrac12\,|r(k_0)|^{2}
+=\frac{1}{2}\Big(\frac{g}{2t}\Big)^{2}\frac{1}{\sin^{2}(ak_0)} .
+\label{eq:Rsimple}
+\end{equation}
+Coherence is therefore lost predominantly to the reflected channel and not
+to pointer distinguishability. That identification explains why $R$ is
+second order in $g$ while $\Delta\phi$ is first order, and it is consistent
+with the entropy scaling reported in Sec.~III~B.
+
+Collecting the results, the post-measurement Bloch vector is
+\begin{equation}
+\vec q=
+\begin{pmatrix}
+R\sin\theta_b\cos(\phi_0-\Delta\phi)\\
+R\sin\theta_b\sin(\phi_0-\Delta\phi)\\
+\cos\theta_b
+\end{pmatrix}.
+\label{eq:bloch}
+\end{equation}
+The kick retards the azimuth by $\Delta\phi$ and contracts the equatorial
+projection by $R$, leaving the polar angle fixed. The sense of the rotation
+follows the sign of $g$: a reduced bond amplitude, i.e.\ $g>0$, retards the
+transmitted branch and the coherence lags, whereas an enhanced bond
+advances it.
+
+%---------------------------------------------------------------------
+\subsection{Contrast with the ideal scheme, and validation}
+\label{app:vn:contrast}
+
+The ideal von Neumann coupling $\Phi(k)=-\lambda k$ has zero curvature.
+Consequently its displacement is rigid and its phase is locked to the
+carrier momentum, $\Delta\phi=\lambda k_0$, which grows with $k_0$. The
+lattice QPC behaves oppositely: Eq.~\eqref{eq:dphi} decreases
+monotonically with $k_0$ and vanishes at the band centre. Hence the
+discrepancy is not a matter of coefficients. It reflects the fact that a
+bond defect is a curved scatterer, whereas the ideal pointer coupling is by
+construction flat. Our model is beyond von Neumann in this precise and
+quantifiable sense: $\Phi''\neq0$.
+
+We validate Eqs.~\eqref{eq:dphi} and \eqref{eq:R} against exact
+time-dependent numerics on Eq.~(1) with $\Omega=0$, propagating the packet
+through the bond and comparing the conditionally scattered state with the
+freely evolved one. Table~\ref{tab:vn} collects the comparison for
+$\Delta_0=7$ and $N=700$.
+
+\begin{table}[t]
+\caption{(a) Backaction phase and (b) coherence factor from exact
+time-dependent numerics compared with Eqs.~\eqref{eq:dphi} and
+\eqref{eq:R}, for $\Delta_0=7$, $N=700$, $\Omega=0$.}
+\label{tab:vn}
+\begin{ruledtabular}
+\begin{tabular}{cc cc c cc c}
+$g$ & $k_0/\pi$ & $\Delta\phi_{\rm ED}$ & Eq.~\eqref{eq:dphi} & ratio
+& $1-R_{\rm ED}$ & Eq.~\eqref{eq:R} & ratio\\
+\hline
+0.100 & 0.30 & 0.037803 & 0.037802 & 1.0000 & $2.094\times10^{-3}$ & $2.035\times10^{-3}$ & 1.029\\
+0.100 & 0.40 & 0.016841 & 0.016835 & 1.0003 & $1.489\times10^{-3}$ & $1.468\times10^{-3}$ & 1.015\\
+0.050 & 0.30 & 0.018680 & 0.018674 & 1.0003 & $5.11\times10^{-4}$  & $4.97\times10^{-4}$  & 1.029\\
+0.050 & 0.40 & 0.008319 & 0.008316 & 1.0004 & $3.63\times10^{-4}$  & $3.58\times10^{-4}$  & 1.014\\
+0.025 & 0.30 & 0.009284 & 0.009280 & 1.0004 & $1.26\times10^{-4}$  & $1.23\times10^{-4}$  & 1.029\\
+0.025 & 0.40 & 0.004134 & 0.004133 & 1.0003 & $9.0\times10^{-5}$   & $8.8\times10^{-5}$   & 1.014\\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+The phase agrees to better than one part in $10^{3}$ across the
+perturbative range once the curvature term is retained. Dropping that term
+degrades the agreement to the percent level, which confirms its
+interpretation. The residual few-percent offset in $R$ is the next cumulant
+and scales as $\sigma_k^{4}$, as expected.
+
+%---------------------------------------------------------------------
+\subsection{Regime of validity}
+\label{app:vn:validity}
+
+Three inequalities delimit the treatment. First, the kick picture on the
+detector side requires no Brillouin-zone wrapping, $\lambda\ll\pi/k_0$.
+Second, the perturbative expansion of Eq.~\eqref{eq:tauexact} requires
+$g\ll2t$. Third, and separately, the collapse of the interaction picture on
+the qubit side requires
+\begin{equation}
+\Omega\,\delta\tau\ll1 ,
+\label{eq:slow}
+\end{equation}
+which follows from
+$[\hat h_I,\hat H_0]=-i\Omega\,\hat\Phi(\hat k)\otimes\hat\sigma_y/\delta\tau$,
+obtained using $\ket{1}\bra{1}=\tfrac12(\mathbb{1}-\hat\sigma_z)$ and
+$[\hat\Phi(\hat k),\hat H_D]=0$. Equation~\eqref{eq:slow} is precisely the
+slow-qubit condition of regime~[I], which identifies the slow-qubit limit
+with the non-demolition limit. Outside it the kick picture fails on the
+qubit side, the qubit rotates during the encounter, and the resonant
+inelastic channel of Sec.~III~C opens. That breakdown is the origin of the
+enhanced measurement band, and it is analysed perturbatively in
+Appendix~C.
+\end{document}
