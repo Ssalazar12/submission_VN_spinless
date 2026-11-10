@@ -6,7 +6,7 @@ The repository includes a requirements.txt with the required packacge version to
 where a a single unitary Von Neumann measurement kick between a QPC and a qubit is implemented using a Gaussian wavepacket. This repor generates a set of data from an exact diagonalization algorithm implemented 
 in python and then produces a consolidated dataset a processing jupyter notebook for porcessing. This also generates all the figures included in the manuscript 
 
-## Data generattion
+## Data generation
 
 The script qutip_tools.py is a custom packagr with helper functions for the raw data generation and the reading and processing of it.
 
