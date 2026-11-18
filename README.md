@@ -4,7 +4,9 @@
 This is the trimmed down version containing only the files necessary to reproduce all the figures in the submission. For the full repo including exploratory analysis refer to https://github.com/Ssalazar12/qpc_spinless.
 The repository includes a requirements.txt with the required packacge version to generate a python virtual environment. This repo contains the code for the _Wavepacket-based Unitary Measurement Kicks_ manuscript, 
 where a a single unitary Von Neumann measurement kick between a QPC and a qubit is implemented using a Gaussian wavepacket. This repor generates a set of data from an exact diagonalization algorithm implemented 
-in python and then produces a consolidated dataset a processing jupyter notebook for porcessing. This also generates all the figures included in the manuscript 
+in python and then produces a consolidated dataset a processing jupyter notebook for porcessing. This also generates all the figures included in the manuscript.
+
+The raw data is fond in Zenodo: https://doi.org/10.5281/zenodo.24335097 
 
 ## Data generation
 
